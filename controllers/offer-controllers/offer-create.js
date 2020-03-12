@@ -4,23 +4,13 @@ module.exports = async (req, res, next)=> {
 
     try{    
 
-        const data = {
-            name: req.body.name,
-            type: req.body.type,
-            market: req.body.market,
-            value: req.body.value,
-            combinable: req.body.combinable,
-            combinableOffers: req.body.combinableOffers,
-            ships: req.body.ships,
-            destinations: req.body.destinations,
-            depaturePorts: req.body.depaturePorts,
-            visitingPorts: req.body.visitingPorts,
-            promoDates:req.body.promoDates,
-            sailingDates: req.body.sailingDates,
-            numberOfNights: req.body.numberOfNights,
+        const data = {};
+
+        for(const property in req.body) {
+            data[property] = req.body[property];
         }
 
-       await Offer.Save(data);
+       await Offer.create(data);
        res.status(200).json({message: 'new offer created'});
 
     }catch(error){

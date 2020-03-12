@@ -15,13 +15,13 @@ router.get('/', function(req, res, next) {
 router.post('/offer/create',  offerCreateController);
 
 //GET READ ALL OFFERS
-router.post('/offer/read', offerReadController);
+router.get('/offer/read', offerReadController);
 
 //POST UPDATE OFFER
 router.post('/offer/update', offerUpdateController);
 
 //POST DELETE OFFER
-router.get('/offer.delete', offerDeleteController);
+router.delete('/offer/delete', offerDeleteController);
 
 
 module.exports = router;

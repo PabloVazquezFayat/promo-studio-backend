@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const offerSchema = new Schema({
     name: {type: String},
     type: {type: String},
-    market: {type: String},
+    markets: [String],
     value: {type: String},
     combinable: {type: Boolean},
     combinableOffers: [String],

@@ -2,16 +2,18 @@ const Offer = require('../../models/Offer');
 
 module.exports = async (req, res, next)=> {
 
-    try{    
+    try{
 
         const data = {};
 
         for(const property in req.body) {
-            data[property] = req.body[property];
+            if(property !== "id"){
+                data[property] = req.body[property];
+            }
         }
 
-        await Offer.findByIdAndUpdate({_id: req.body.id, data});
-        res.status(200).json({message: 'new offer created'});
+        await Offer.findByIdAndUpdate({_id: req.body.id}, data);
+        res.status(200).json({message: 'offer updated'});
 
     }catch(error){
         next(error)
