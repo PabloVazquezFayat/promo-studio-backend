@@ -3,6 +3,7 @@ const router = express.Router();
 
 const offerCreateController = require('../controllers/offer-controllers/offer-create');
 const offerReadController = require('../controllers/offer-controllers/offer-read');
+const offerReadSingleController = require('../controllers/offer-controllers/offer-read-single');
 const offerUpdateController = require('../controllers/offer-controllers/offer-update');
 const offerDeleteController = require('../controllers/offer-controllers/offer-delete');
 
@@ -16,6 +17,9 @@ router.post('/offer/create',  offerCreateController);
 
 //GET READ ALL OFFERS
 router.get('/offer/read', offerReadController);
+
+//GET READ SINGLE OFFER
+router.get('/offer/read/:id', offerReadSingleController);
 
 //POST UPDATE OFFER
 router.post('/offer/update', offerUpdateController);
