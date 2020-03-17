@@ -7,6 +7,8 @@ const offerReadSingleController = require('../controllers/offer-controllers/offe
 const offerUpdateController = require('../controllers/offer-controllers/offer-update');
 const offerDeleteController = require('../controllers/offer-controllers/offer-delete');
 
+const componentsBuilderReadController = require('../controllers/components-builder-controllers/builder-read');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.status(200).json({message: 'Welcome to Promo Studio'});
@@ -26,6 +28,9 @@ router.post('/offer/update', offerUpdateController);
 
 //POST DELETE OFFER
 router.delete('/offer/delete', offerDeleteController);
+
+//GET EXPERIENCE BUILDER
+router.get('/components/builder', componentsBuilderReadController);
 
 
 module.exports = router;
