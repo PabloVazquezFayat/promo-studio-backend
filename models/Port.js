@@ -6,6 +6,6 @@ const portSchema = new Schema({
     code: {type: String}
 });
 
-const Market = mongoose.model('Ports', portSchema);
+const Port = mongoose.model('Port', portSchema);
 
-module.exports = Market;
+module.exports = Port;
