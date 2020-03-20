@@ -19,25 +19,25 @@ router.get('/', function(req, res, next) {
 });
 
 //POST CREATE NEW OFFER
-router.post('/offer/create',  offerCreateController);
+router.post('/offer/create', authenticateUser, offerCreateController);
 
 //GET READ ALL OFFERS
 router.get('/offer/read', authenticateUser, offerReadController);
 
 //GET READ SINGLE OFFER
-router.get('/offer/read/:id', offerReadSingleController);
+router.get('/offer/read/:id', authenticateUser, offerReadSingleController);
 
 //POST UPDATE OFFER
-router.post('/offer/update', offerUpdateController);
+router.post('/offer/update', authenticateUser, offerUpdateController);
 
 //POST DELETE OFFER
-router.delete('/offer/delete', offerDeleteController);
+router.delete('/offer/delete', authenticateUser, offerDeleteController);
 
 //GET EXPERIENCE BUILDER
 router.get('/components/builder', authenticateUser, componentsBuilderReadController);
 
 //POST CREATE NEW USER
-router.post('/user/create', registerUser);
+router.post('/user/create', authenticateUser, registerUser);
 
 //GET LOGIN USER 
 router.post('/user/login', loginUser);
