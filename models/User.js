@@ -6,10 +6,10 @@ const userSchema = new Schema({
     email: {type: String, unique: true},
     password: {type: String},
     permissions: {
-        create: {type: Boolean},
-        read:   {type: Boolean},
-        update: {type: Boolean},
-        delete: {type: Boolean},
+        create: {type: Boolean, default: false},
+        read:   {type: Boolean, default: true},
+        update: {type: Boolean, default: false},
+        delete: {type: Boolean, default: false},
     },
 });
 
