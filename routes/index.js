@@ -9,9 +9,9 @@ const offerDeleteController = require('../controllers/offer-controllers/offer-de
 
 const componentsBuilderReadController = require('../controllers/components-builder-controllers/builder-read');
 
-const registerUser = require('../controllers/auth-controller/register-user-contoller');
-const authenticateUser = require('../controllers/auth-controller/authenticate-user-controller');
-const loginUser = require('../controllers/auth-controller/login-user-controller');
+const registerUser = require('../controllers/user-controller/register-user-contoller');
+const authenticateUser = require('../controllers/user-controller/authenticate-user-controller');
+const loginUser = require('../controllers/user-controller/login-user-controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
