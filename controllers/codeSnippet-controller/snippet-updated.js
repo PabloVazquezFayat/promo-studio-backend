@@ -1,4 +1,4 @@
-const Offer = require('../../models/Offer');
+const CodeSnippet = require('../../models/CodeSnippet');
 
 module.exports = async (req, res, next)=> {
 
@@ -12,8 +12,8 @@ module.exports = async (req, res, next)=> {
             }
         }
 
-        await Offer.findByIdAndUpdate({_id: req.body.id}, data);
-        res.status(200).json({message: 'Offer updated'});
+        await CodeSnippet.findByIdAndUpdate({_id: req.body.id}, data);
+        res.status(200).json({message: 'Code-snippet updated'});
 
     }catch(error){
         next(error)

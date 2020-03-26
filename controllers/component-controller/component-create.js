@@ -1,10 +1,8 @@
-const Offer = require('../../models/Offer');
+const Component = require('../../models/Component');
 
 module.exports = async (req, res, next)=> {
 
     try{
-        
-        console.log(req.body);
 
         const data = {};
 
@@ -12,10 +10,8 @@ module.exports = async (req, res, next)=> {
             data[property] = req.body[property];
         }
 
-        console.log(data);
-
-       await Offer.create(data);
-       res.status(200).json({message: 'New offer created'});
+        await Component.create(data);
+        res.status(200).json({message: 'New component created'});
 
     }catch(error){
         next(error)

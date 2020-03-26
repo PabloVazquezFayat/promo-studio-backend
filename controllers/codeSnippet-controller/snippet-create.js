@@ -1,21 +1,17 @@
-const Offer = require('../../models/Offer');
+const CodeSnippet = require('../../models/CodeSnippet');
 
 module.exports = async (req, res, next)=> {
 
     try{
         
-        console.log(req.body);
-
         const data = {};
 
         for(const property in req.body) {
             data[property] = req.body[property];
         }
 
-        console.log(data);
-
-       await Offer.create(data);
-       res.status(200).json({message: 'New offer created'});
+        await CodeSnippet.create(data);
+        res.status(200).json({message: 'New code-snippet created'});
 
     }catch(error){
         next(error)

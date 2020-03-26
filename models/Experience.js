@@ -3,10 +3,12 @@ const Schema = mongoose.Schema;
 
 const experienceSchema = new Schema({
     name: {type: String},
-    status: {type: String, enum: ['active', 'paused', 'schedueled', 'ended', 'draft']},
+    status: {type: String, enum: ['active', 'paused', 'scheduled', 'ended', 'draft']},
     dateCreated: {type: String},
     dateModified: {type: String},
-    components: [{type: Schema.Types.ObjectId, ref: 'Component'}],
+    components: [{type: mongoose.Schema.Types.ObjectId, ref: 'Component'}],
+    codeSnippets: [{type: mongoose.Schema.Types.ObjectId, ref: 'CodeSnippet'}],
+    author: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     market: {type: String},
 });
 

@@ -8,7 +8,7 @@ const offerSchema = new Schema({
     value: {type: String},
     discount: {type: String},
     combinable: {type: Boolean},
-    combinableOffers: [{type: Schema.Types.ObjectId, ref: 'Offer'}],
+    combinableOffers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
     ships: [String],
     destinations: [String],
     depaturePorts: [String],

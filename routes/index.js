@@ -7,7 +7,17 @@ const offerReadSingleController = require('../controllers/offer-controllers/offe
 const offerUpdateController = require('../controllers/offer-controllers/offer-update');
 const offerDeleteController = require('../controllers/offer-controllers/offer-delete');
 
-const componentsBuilderReadController = require('../controllers/components-builder-controllers/builder-read');
+const componentCreate = require('../controllers/component-controller/component-create');
+const componentRead = require('../controllers/component-controller/component-read');
+const componentReadSingle = require('../controllers/component-controller/component-read-single');
+const componentUpdate = require('../controllers/component-controller/component-update');
+const componentDelete = require('../controllers/component-controller/component-delete');
+
+const codeSnippetCreate = require('../controllers/codeSnippet-controller/snippet-create');
+const codeSnippetRead = require('../controllers/codeSnippet-controller/snippet-read');
+const codeSnippetReadSingle = require('../controllers/codeSnippet-controller/snippet-read-single');
+const codeSnippetUpdate = require('../controllers/codeSnippet-controller/snippet-updated');
+const codeSnippetDelete = require('../controllers/codeSnippet-controller/snippet-delete');
 
 const experienceCreate = require('../controllers/experience-controller/experience-create');
 const experienceRead = require('../controllers/experience-controller/experience-read');
@@ -65,15 +75,47 @@ router.post('/offer/update', userAuth, offerUpdateController);
 router.delete('/offer/delete', userAuth, offerDeleteController);
 
 
+/**
+ * COMPONENTS ENDPOINTS
+ */
+//POST COMPONENT CREATE
+router.post('/component/create', userAuth, componentCreate);
 
-//GET EXPERIENCE BUILDER
-router.get('/components/builder', userAuth, componentsBuilderReadController);
+//POST COMPONENT READ
+router.get('/component/read', userAuth, componentRead);
 
+//POST COMPONENT READ SINGLE
+router.get('/component/read/:id', userAuth, componentReadSingle);
+
+//POST COMPONENT UPDATE
+router.post('/component/update', userAuth, componentUpdate);
+
+//POST COMPONENT DELETE
+router.delete('/component/delete', userAuth, componentDelete);
+
+
+/**
+ * CODE-SNIPPET ENDPOINTS
+ */
+//POST CODE-SNIPPET CREATE
+router.post('/snippet/create', userAuth, codeSnippetCreate);
+
+//GET CODE-SNIPPET READ
+router.get('/snippet/read', userAuth, codeSnippetRead);
+
+//GET CODE-SNIPPET READ SINGLE
+router.get('/snippet/read/:id', userAuth, codeSnippetReadSingle);
+
+//POST CODE-SNIPPET UPDATE
+router.post('/snippet/update', userAuth, codeSnippetUpdate);
+
+//DELETE CODE-SNIPPET DELETE
+router.delete('/snippet/delete', userAuth, codeSnippetDelete);
 
 /**
  * EXPERIENCE ENDPOINTS
  */
-//GET EXPERIECE CREATE
+//POST EXPERIECE CREATE
 router.post('/experience/create', userAuth, experienceCreate);
 
 //GET EXPERIECE READ ALL
@@ -82,11 +124,11 @@ router.get('/experience/read', userAuth, experienceRead);
 //GET EXPERIECE READ SINGLE
 router.get('/experience/read/:id', userAuth, experienceReadSingle);
 
-//GET EXPERIECE UPDATE
+//POST EXPERIECE UPDATE
 router.post('/experience/update', userAuth, experienceUpdate);
 
-//GET EXPERIECE DELETE
-router.post('/experience/delete', userAuth, experienceDelete);
+//DELETE EXPERIECE DELETE
+router.delete('/experience/delete', userAuth, experienceDelete);
 
 
 /**
