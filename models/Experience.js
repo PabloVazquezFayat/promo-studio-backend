@@ -9,6 +9,7 @@ const experienceSchema = new Schema({
     components: [{type: mongoose.Schema.Types.ObjectId, ref: 'Component'}],
     codeSnippets: [{type: mongoose.Schema.Types.ObjectId, ref: 'CodeSnippet'}],
     author: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    editors: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     market: {type: String},
 });
 
