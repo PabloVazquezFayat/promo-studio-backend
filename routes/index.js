@@ -31,6 +31,7 @@ const userUpdate = require('../controllers/user-controller/user-update');
 const userDelete = require('../controllers/user-controller/user-delete');
 const userAuth = require('../controllers/user-controller/user-auth');
 const userLogin = require('../controllers/user-controller/user-login');
+const userPermissions = require('../controllers/user-controller/user-persmissions');
 
 const marketCreate = require('../controllers/market-controller/market-create');
 const marketRead = require('../controllers/market-controller/market-read');
@@ -60,91 +61,91 @@ router.get('/', function(req, res, next) {
  * OFFER ENDPOINTS
  */
 //POST CREATE NEW OFFER
-router.post('/offer/create', userAuth, offerCreateController);
+router.post('/offer/create', userAuth, userPermissions.createPermission, offerCreateController);
 
 //GET READ ALL OFFERS
-router.get('/offer/read', userAuth, offerReadController);
+router.get('/offer/read', userAuth, userPermissions.readPermission, offerReadController);
 
 //GET READ SINGLE OFFER
-router.get('/offer/read/:id', userAuth, offerReadSingleController);
+router.get('/offer/read/:id', userAuth, userPermissions.readPermission, offerReadSingleController);
 
 //POST UPDATE OFFER
-router.post('/offer/update', userAuth, offerUpdateController);
+router.post('/offer/update', userAuth, userPermissions.updatePermission, offerUpdateController);
 
 //POST DELETE OFFER
-router.delete('/offer/delete', userAuth, offerDeleteController);
+router.delete('/offer/delete', userAuth, userPermissions.deletePermission, offerDeleteController);
 
 
 /**
  * COMPONENTS ENDPOINTS
  */
 //POST COMPONENT CREATE
-router.post('/component/create', userAuth, componentCreate);
+router.post('/component/create', userAuth, userPermissions.createPermission, componentCreate);
 
 //POST COMPONENT READ
-router.get('/component/read', userAuth, componentRead);
+router.get('/component/read', userAuth, userPermissions.readPermission, componentRead);
 
 //POST COMPONENT READ SINGLE
-router.get('/component/read/:id', userAuth, componentReadSingle);
+router.get('/component/read/:id', userAuth, userPermissions.readPermission, componentReadSingle);
 
 //POST COMPONENT UPDATE
-router.post('/component/update', userAuth, componentUpdate);
+router.post('/component/update', userAuth, userPermissions.updatePermission, componentUpdate);
 
 //POST COMPONENT DELETE
-router.delete('/component/delete', userAuth, componentDelete);
+router.delete('/component/delete', userAuth, userPermissions.deletePermission, componentDelete);
 
 
 /**
  * CODE-SNIPPET ENDPOINTS
  */
 //POST CODE-SNIPPET CREATE
-router.post('/snippet/create', userAuth, codeSnippetCreate);
+router.post('/snippet/create', userAuth, userPermissions.createPermission, codeSnippetCreate);
 
 //GET CODE-SNIPPET READ
-router.get('/snippet/read', userAuth, codeSnippetRead);
+router.get('/snippet/read', userAuth, userPermissions.readPermission, codeSnippetRead);
 
 //GET CODE-SNIPPET READ SINGLE
-router.get('/snippet/read/:id', userAuth, codeSnippetReadSingle);
+router.get('/snippet/read/:id', userAuth, userPermissions.readPermission, codeSnippetReadSingle);
 
 //POST CODE-SNIPPET UPDATE
-router.post('/snippet/update', userAuth, codeSnippetUpdate);
+router.post('/snippet/update', userAuth, userPermissions.updatePermission, codeSnippetUpdate);
 
 //DELETE CODE-SNIPPET DELETE
-router.delete('/snippet/delete', userAuth, codeSnippetDelete);
+router.delete('/snippet/delete', userAuth, userPermissions.deletePermission, codeSnippetDelete);
 
 /**
  * EXPERIENCE ENDPOINTS
  */
 //POST EXPERIECE CREATE
-router.post('/experience/create', userAuth, experienceCreate);
+router.post('/experience/create', userAuth, userPermissions.createPermission, experienceCreate);
 
 //GET EXPERIECE READ ALL
-router.get('/experience/read', userAuth, experienceRead);
+router.get('/experience/read', userAuth, userPermissions.readPermission, experienceRead);
 
 //GET EXPERIECE READ SINGLE
-router.get('/experience/read/:id', userAuth, experienceReadSingle);
+router.get('/experience/read/:id', userAuth, userPermissions.readPermission, experienceReadSingle);
 
 //POST EXPERIECE UPDATE
-router.post('/experience/update', userAuth, experienceUpdate);
+router.post('/experience/update', userAuth, userPermissions.updatePermission, experienceUpdate);
 
 //DELETE EXPERIECE DELETE
-router.delete('/experience/delete', userAuth, experienceDelete);
+router.delete('/experience/delete', userAuth, userPermissions.deletePermission, experienceDelete);
 
 
 /**
  * USER ENDPOINTS
  */
 //POST CREATE NEW USER
-router.post('/user/create', userAuth, userCreate);
+router.post('/user/create', userAuth, userPermissions.adminPermission, userCreate);
 
 //GET ALL USERS
-router.get('/user/read', userAuth, userRead);
+router.get('/user/read', userAuth, userPermissions.adminPermission, userRead);
 
 //POST CREATE UPDATE USER
-router.post('/user/update', userAuth, userUpdate);
+router.post('/user/update', userAuth, userPermissions.adminPermission, userUpdate);
 
 //POST DELETE USER
-router.delete('/user/delete', userAuth, userDelete);
+router.delete('/user/delete', userAuth, userPermissions.adminPermission, userDelete);
 
 //GET LOGIN USER
 router.post('/user/login', userLogin);
@@ -154,57 +155,57 @@ router.post('/user/login', userLogin);
  * MARKET ENDPOINTS
  */
 //POST CREATE NEW MARKET
-router.post('/market/create', userAuth, marketCreate);
+router.post('/market/create', userAuth, userPermissions.createPermission, marketCreate);
 
 //GET READ MARKETS
-router.get('/market/read', userAuth, marketRead);
+router.get('/market/read', userAuth, userPermissions.readPermission, marketRead);
 
 //GET READ SINGLE MARKET
-router.get('/market/read/:id', userAuth, marketReadSingle);
+router.get('/market/read/:id', userAuth, userPermissions.readPermission, marketReadSingle);
 
 //POST UpDATE SINGLE MARKET
-router.post('/market/update', userAuth, marketUpdate);
+router.post('/market/update', userAuth, userPermissions.updatePermission, marketUpdate);
 
 //POST DELETE SINGLE MARKET
-router.delete('/market/delete', userAuth, marketDelete);
+router.delete('/market/delete', userAuth, userPermissions.deletePermission, marketDelete);
 
 
 /**
  * PORT ENDPOINTS
  */
 //POST CREATE NEW PORT
-router.post('/port/create', userAuth, portCreate);
+router.post('/port/create', userAuth, userPermissions.createPermission, portCreate);
 
 //GET READ PORTS
-router.get('/port/read', userAuth, portRead);
+router.get('/port/read', userAuth, userPermissions.readPermission, portRead);
 
 //GET READ SINGLE PORT
-router.get('/port/read/:id', userAuth, portReadSingle);
+router.get('/port/read/:id', userAuth, userPermissions.readPermission, portReadSingle);
 
 //POST UPDATE SINGLE PORT
-router.post('/port/update', userAuth, portUpdate);
+router.post('/port/update', userAuth, userPermissions.updatePermission, portUpdate);
 
 //POST DELETE SINGLE PORT
-router.delete('/port/delete', userAuth, portDelete);
+router.delete('/port/delete', userAuth, userPermissions.deletePermission, portDelete);
 
 
 /**
  * SHIP ENDPOINTS
  */
 //POST CREATE NEW SHIP
-router.post('/ship/create', userAuth, shipCreate);
+router.post('/ship/create', userAuth, userPermissions.createPermission, shipCreate);
 
 //GET READ SHIPS
-router.get('/ship/read', userAuth, shipRead);
+router.get('/ship/read', userAuth, userPermissions.readPermission, shipRead);
 
 //GET READ SINGLE SHIP
-router.get('/ship/read/:id', userAuth, shipReadSingle);
+router.get('/ship/read/:id', userAuth, userPermissions.readPermission, shipReadSingle);
 
 //POST UPDATE SINGLE SHIP
-router.post('/ship/update', userAuth, shipUpdate);
+router.post('/ship/update', userAuth, userPermissions.updatePermission, shipUpdate);
 
 //POST DELETE SINGLE SHIP
-router.delete('/ship/delete', userAuth, shipDelete);
+router.delete('/ship/delete', userAuth, userPermissions.deletePermission, shipDelete);
 
 
 module.exports = router;
