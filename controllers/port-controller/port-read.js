@@ -5,7 +5,10 @@ module.exports = async (req, res, next)=> {
     try{    
 
        let ports = await Port.find();
-       res.status(200).json(ports.length > 0 ? ports : {message: 'There are no existing ports'});
+       let cleanedPorts =  ports.map((port)=>{
+            return {name: port.name, code: port.code}
+       });
+       res.status(200).json(cleanedPorts);
 
     }catch(error){
         next(error)
