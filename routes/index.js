@@ -51,6 +51,11 @@ const shipReadSingle =require('../controllers/ship-controller/ship-read-single')
 const shipUpdate = require('../controllers/ship-controller/ship-update');
 const shipDelete = require('../controllers/ship-controller/ship-delete');
 
+const termsCreate = require('../controllers/terms-controller/terms-create');
+const termsRead = require('../controllers/terms-controller/terms-read');
+const termsUpdate = require('../controllers/terms-controller/terms-update');
+const termsDelete = require('../controllers/terms-controller/terms-delete');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.status(200).json({message: 'Welcome to Promo Studio'});
@@ -206,6 +211,22 @@ router.post('/ship/update', userAuth, userPermissions.updatePermission, shipUpda
 
 //POST DELETE SINGLE SHIP
 router.delete('/ship/delete', userAuth, userPermissions.deletePermission, shipDelete);
+
+
+/**
+ * TERMS ENDPOINTS
+ */
+//POST CREATE NEW TERMS
+router.post('/terms/create', userAuth, userPermissions.createPermission, termsCreate);
+
+//GET READ TERMS
+router.get('/terms/read', userAuth, userPermissions.readPermission, termsRead);
+
+//POST UPDATE TERMS
+router.post('/terms/update', userAuth, userPermissions.updatePermission, termsUpdate);
+
+//POST DELTE TERMS
+router.post('/terms/delete', userAuth, userPermissions.deletePermission, termsDelete);
 
 
 module.exports = router;
