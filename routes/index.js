@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const offerCreateController = require('../controllers/offer-controllers/offer-create');
-const offerReadController = require('../controllers/offer-controllers/offer-read');
-const offerReadSingleController = require('../controllers/offer-controllers/offer-read-single');
-const offerUpdateController = require('../controllers/offer-controllers/offer-update');
-const offerDeleteController = require('../controllers/offer-controllers/offer-delete');
+const promoCreateController = require('../controllers/promo-controller/promo-create');
+const promoReadController = require('../controllers/promo-controller/promo-read');
+const promoReadSingleController = require('../controllers/promo-controller/promo-read-single');
+const promoUpdateController = require('../controllers/promo-controller/promo-update');
+const promoDeleteController = require('../controllers/promo-controller/promo-delete');
 
 const componentCreate = require('../controllers/component-controller/component-create');
 const componentRead = require('../controllers/component-controller/component-read');
@@ -63,22 +63,22 @@ router.get('/', function(req, res, next) {
 
 
 /**
- * OFFER ENDPOINTS
+ * PROMO ENDPOINTS
  */
-//POST CREATE NEW OFFER
-router.post('/offer/create', userAuth, userPermissions.createPermission, offerCreateController);
+//POST CREATE NEW PROMO
+router.post('/promo/create', userAuth, userPermissions.createPermission, promoCreateController);
 
-//GET READ ALL OFFERS
-router.get('/offer/read', userAuth, userPermissions.readPermission, offerReadController);
+//GET READ ALL PROMOS
+router.get('/promo/read', userAuth, userPermissions.readPermission, promoReadController);
 
-//GET READ SINGLE OFFER
-router.get('/offer/read/:id', userAuth, userPermissions.readPermission, offerReadSingleController);
+//GET READ SINGLE PROMO
+router.get('/promo/read/:id', userAuth, userPermissions.readPermission, promoReadSingleController);
 
-//POST UPDATE OFFER
-router.post('/offer/update', userAuth, userPermissions.updatePermission, offerUpdateController);
+//POST UPDATE PROMO
+router.post('/promo/update', userAuth, userPermissions.updatePermission, promoUpdateController);
 
-//POST DELETE OFFER
-router.delete('/offer/delete', userAuth, userPermissions.deletePermission, offerDeleteController);
+//POST DELETE PROMO
+router.delete('/promo/delete', userAuth, userPermissions.deletePermission, promoDeleteController);
 
 
 /**
