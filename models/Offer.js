@@ -1,32 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const offerSchema = new Schema({
-    name: {type: String, minlength: 3},
-    type: {type: String, minlength: 1, enum: ['Monthly', 'Flash']},
-    markets: {type: String},
+const sectionSchema = new Schema({
+    type: {type: String},
     value: {type: String},
-    combinable: {type: Boolean},
-    combinableOffers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
-    ships: [String],
-    destinations: [String],
-    depaturePorts: [String],
-    visitingPorts: [String],
-    promoDates: [
-        {
-            start: {type: String},
-            end: {type: String}
-        }
-    ],
-    sailingDates: [
-        {
-            start: {type: String},
-            end: {type: String}
-        }
-    ],
-    numberOfNights: {type: String},
+    associatedOffer: [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
 });
 
-const Offer = mongoose.model('Offer', offerSchema);
+const Section = mongoose.model('Section', sectionSchema);
 
-module.exports = Offer;
+module.exports = Section;
