@@ -3,10 +3,9 @@ const Schema = mongoose.Schema;
 
 const offerSchema = new Schema({
     name: {type: String, minlength: 3},
-    type: {type: String, minlength: 1},
-    markets: [String],
+    type: {type: String, minlength: 1, enum: ['Monthly', 'Flash']},
+    markets: {type: String},
     value: {type: String},
-    discount: {type: String},
     combinable: {type: Boolean},
     combinableOffers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
     ships: [String],
