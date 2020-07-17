@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const sectionSchema = new Schema({
+const offerSchema = new Schema({
     type: {type: String},
     value: {type: String},
-    associatedOffer: [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
+    associatedPromos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Promo'}],
 });
 
-const Section = mongoose.model('Section', sectionSchema);
+const Offer = mongoose.model('Offer', offerSchema);
 
-module.exports = Section;
+module.exports = Offer;

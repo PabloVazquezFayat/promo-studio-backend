@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const offerSchema = new Schema({
+const promoSchema = new Schema({
     name: {type: String, minlength: 3},
     type: {type: String, minlength: 1, enum: ['Monthly', 'Flash']},
     markets: {type: String},
     value: {type: String},
     combinable: {type: Boolean},
-    combinableOffers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
+    combinableOffers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Promo'}],
     ships: [String],
     destinations: [String],
     depaturePorts: [String],
@@ -27,6 +27,6 @@ const offerSchema = new Schema({
     numberOfNights: {type: String},
 });
 
-const Offer = mongoose.model('Offer', offerSchema);
+const Promo = mongoose.model('Promo', promoSchema);
 
-module.exports = Offer;
+module.exports = Promo;
