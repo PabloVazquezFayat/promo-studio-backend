@@ -182,7 +182,7 @@ router.delete('/market/delete', userAuth, userPermissions.deletePermission, mark
 router.post('/port/create', userAuth, userPermissions.createPermission, portCreate);
 
 //GET READ PORTS
-router.get('/port/read', portRead);//userAuth, userPermissions.readPermission,
+router.get('/port/read', userAuth, userPermissions.readPermission, portRead);
 
 //GET READ SINGLE PORT
 router.get('/port/read/:id', userAuth, userPermissions.readPermission, portReadSingle);
