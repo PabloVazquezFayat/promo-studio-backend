@@ -56,6 +56,9 @@ const termsRead = require('../controllers/terms-controller/terms-read');
 const termsUpdate = require('../controllers/terms-controller/terms-update');
 const termsDelete = require('../controllers/terms-controller/terms-delete');
 
+const productCreate = require('../controllers/product-controller/product-create');
+const productRead = require('../controllers/product-controller/product-read');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.status(200).json({message: 'Welcome to Promo Studio'});
@@ -228,5 +231,14 @@ router.post('/terms/update', userAuth, userPermissions.updatePermission, termsUp
 //POST DELTE TERMS
 router.post('/terms/delete', userAuth, userPermissions.deletePermission, termsDelete);
 
+
+/**
+ * PRODUCT ENDPOINTS
+ */
+//POST CREATE PRODUCTS
+router.post('/products/create', productCreate);
+
+//GET READ PRODUCT
+router.get('/products/read', productRead);
 
 module.exports = router;
