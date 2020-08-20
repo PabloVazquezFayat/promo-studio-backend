@@ -4,17 +4,23 @@ module.exports = async (req, res, next)=> {
 
     try{
 
-        const filter = {
-            productID: req.body.productID,
-            shipCode: req.body.shipCode,
-            sailingDate: req.body.sailingDate
-        };
+        const filter = {};
+
+        if(req.body.productID) filter.productID = req.body.productID;
+        if(req.body.shipCode) filter.shipCode = req.body.shipCode;
+        if(req.body.sailingDate) filter.sailingDate = req.body.sailingDate;
         
-       let products = await Product.find(filter);
-       res.status(200).json(products);
+        let products = await Product.find(filter);
+
+        let responseBody = {
+            length: products.length,
+            results: products
+        }
+
+        res.status(200).json(responseBody);
 
     }catch(error){
-        next(error)
+        next(error);
     }
 
 }
